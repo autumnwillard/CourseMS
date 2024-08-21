@@ -1,0 +1,90 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971.CourseDetailPage"
+             Title="Course Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label x:Name="courseNameLabel" FontSize="32" FontAttributes="Bold" TextColor="#003057" HorizontalTextAlignment="Center" />
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Status" FontAttributes="Bold" TextColor="#003057" Grid.Row="0" Grid.Column="0" />
+                    <Frame BackgroundColor="#003057" Padding="10" CornerRadius="10" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" BorderColor="Transparent">
+                        <Label x:Name="statusLabel" TextColor="White" FontSize="Small" />
+                    </Frame>
+
+                    <Label Text="Start Date" FontAttributes="Bold" TextColor="#003057" Grid.Row="1" Grid.Column="0" />
+                    <Label x:Name="startDateLabel" TextColor="#003057" Grid.Row="1" Grid.Column="1" HorizontalOptions="End" />
+
+                    <Label Text="End Date" FontAttributes="Bold" TextColor="#003057" Grid.Row="2" Grid.Column="0" />
+                    <Label x:Name="endDateLabel" TextColor="#003057" Grid.Row="2" Grid.Column="1" HorizontalOptions="End" />
+
+                    <Label Text="Instructor" FontAttributes="Bold" TextColor="#003057" Grid.Row="3" Grid.Column="0" />
+                    <StackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="End">
+                        <Label x:Name="instructorNameLabel" TextColor="#003057" HorizontalOptions="End" />
+                        <Label x:Name="instructorPhoneLabel" TextColor="#003057" HorizontalOptions="End" />
+                        <Label x:Name="instructorEmailLabel" TextColor="#003057" HorizontalOptions="End" />
+                    </StackLayout>
+                </Grid>
+
+                <Button Text="Edit Course" Clicked="OnEditCourseClicked" BackgroundColor="#327DA9" TextColor="White" FontAttributes="Bold" Margin="0,10,0,0" />
+
+                <Label Text="Write a Note" FontSize="Medium" FontAttributes="Bold" TextColor="#003057" Margin="0, 50, 0, 0" />
+                <Editor x:Name="notesEditor" Placeholder="Enter notes here..." Margin="0,10,0,10" />
+                <Button Text="Save Note" Clicked="OnSaveNotesClicked" BackgroundColor="#327DA9" TextColor="White" FontAttributes="Bold" />
+
+                <Label Text="Notes" FontSize="Large" FontAttributes="Bold" TextColor="#003057" Margin="0, 20, 0, 0" />
+                <CollectionView x:Name="notesCollectionView" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="0,5,0,10" BackgroundColor="#f0f0f0" BorderColor="Transparent" CornerRadius="10">
+                                <StackLayout Spacing="10">
+                                    <Label Text="{Binding Text}" VerticalOptions="Center" TextColor="#003057" />
+                                    <HorizontalStackLayout Margin="0,10,0,0" Spacing="10" HorizontalOptions="End">
+                                        <Button Text="Edit" Clicked="OnEditNoteClicked" BackgroundColor="#327DA9" TextColor="White" FontAttributes="Bold" />
+                                        <Button Text="Share" Clicked="OnShareNoteClicked" BackgroundColor="#63666A" TextColor="White" FontAttributes="Bold" />
+                                        <Button Text="Delete" Clicked="OnDeleteNoteClicked" BackgroundColor="#FF0000" TextColor="White" FontAttributes="Bold" />
+                                    </HorizontalStackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+                <Label Text="Assessments" FontSize="Large" FontAttributes="Bold" TextColor="#003057" Margin="0, 20, 0, 0" />
+                <Button Text="Add Assessment" Clicked="OnAddAssessmentClicked" BackgroundColor="#F6BE00" TextColor="#003057" FontAttributes="Bold" Margin="0,10,0,0" />
+                <CollectionView x:Name="assessmentsCollectionView" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="0,5,0,10" BackgroundColor="#003057" BorderColor="LightGray" CornerRadius="10">
+                                <StackLayout>
+                                    <Label Text="{Binding Title}" TextColor="White" FontSize="Large" FontAttributes="Bold" />
+                                    <Frame BackgroundColor="#404048" Padding="10" CornerRadius="10" HorizontalOptions="Start" Margin="0,5,0,5" BorderColor="Transparent">
+                                        <Label Text="{Binding Type}" TextColor="White" FontSize="Small" />
+                                    </Frame>
+                                    <Label Text="{Binding StartDate, StringFormat='Start Date: {0:MM/dd/yyyy}'}" TextColor="White" FontSize="Small" />
+                                    <Label Text="{Binding EndDate, StringFormat='End Date: {0:MM/dd/yyyy}'}" TextColor="White" FontSize="Small" />
+                                    <HorizontalStackLayout Margin="0,10,0,0" Spacing="10" HorizontalOptions="End">
+                                        <Button Text="Edit" Clicked="OnEditAssessmentClicked" BackgroundColor="#327DA9" TextColor="White" FontAttributes="Bold" />
+                                        <Button Text="Delete" Clicked="OnDeleteAssessmentClicked" BackgroundColor="#63666A" TextColor="White" FontAttributes="Bold" />
+                                    </HorizontalStackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971.AddCoursePage"
+             Title="Add/Edit Course">
+    <ScrollView>
+        <StackLayout BackgroundColor="Transparent" Padding="20">
+            <Label Text="Course Name" FontSize="Large" TextColor="#003057" />
+            <Entry x:Name="entryCourseName" Margin="0,0,0,25"></Entry>
+
+            <Label Text="Start Date" FontSize="Large" TextColor="#003057" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10" Margin="0,0,0,25">
+                <DatePicker x:Name="StartDatePicker" />
+                <Label Text="Get Notified" VerticalOptions="Center" TextColor="#003057" />
+                <Switch x:Name="StartDateNotificationSwitch" />
+            </StackLayout>
+
+            <Label Text="End Date" FontSize="Large" TextColor="#003057" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10" Margin="0,0,0,25">
+                <DatePicker x:Name="EndDatePicker" />
+                <Label Text="Get Notified" VerticalOptions="Center" TextColor="#003057" />
+                <Switch x:Name="EndDateNotificationSwitch" />
+            </StackLayout>
+
+            <Label Text="Course Status" FontSize="Large" TextColor="#003057" />
+            <Picker x:Name="statusPicker" Margin="0,0,0,25">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>In Progress</x:String>
+                        <x:String>Completed</x:String>
+                        <x:String>Dropped</x:String>
+                        <x:String>Plan to Take</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Instructor Name" FontSize="Large" TextColor="#003057" />
+            <Entry x:Name="entryInstructorName" Margin="0,0,0,25"></Entry>
+
+            <Label Text="Instructor Phone" FontSize="Large" TextColor="#003057" />
+            <Entry x:Name="entryInstructorPhone" Margin="0,0,0,25"></Entry>
+
+            <Label Text="Instructor Email" FontSize="Large" TextColor="#003057" />
+            <Entry x:Name="entryInstructorEmail" Margin="0,0,0,25"></Entry>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Save" BackgroundColor="#327DA9" TextColor="White" Clicked="OnSaveClicked" FontAttributes="Bold" />
+                <Button Text="Cancel" BackgroundColor="#404048" TextColor="White" Clicked="OnCancelClicked" FontAttributes="Bold" />
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
